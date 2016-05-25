@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <title>Tfff1's Website</title>
+        <title>Tfff1's Website - Database Searcher</title>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,400italic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="css/main.css">
         
@@ -37,8 +37,8 @@
         <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
         <!-- Load Date & Time Picker: -->
         
-        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+        <script type="text/javascript" src="js/daterangepicker.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
         
         <script>
         
@@ -66,27 +66,27 @@
                 <div class="collapse" id="Databases">
                                 <div class="well nav navbar-nav" style="width:100%">
                 <div class="list-group">
-                    <a id="PapersPast" href="#" class="list-group-item active">
+                    <a id="PapersPast" href="" class="list-group-item active">
                         <h4 class="list-group-item-heading">Papers Past</h4>
                         <p class="list-group-item-text">Papers Past contains more than four million pages of digitised New Zealand newspapers and periodicals. The collection covers the years 1839 to 1948 and includes 132 publications from all regions of New Zealand. </p>
                     </a>
-                    <a id="AucklandLibraries" href="#" class="list-group-item disabled">
+                    <a id="AucklandLibraries" href="" class="list-group-item disabled">
                         <h4 class="list-group-item-heading">Auckland Libraries</h4>
                         <p class="list-group-item-text">The Auckland Super-City Libraries</p>
                     </a>
-                    <a id="NZOnScreen" href="#" class="list-group-item disabled">
+                    <a id="NZOnScreen" href="" class="list-group-item disabled">
                         <h4 class="list-group-item-heading">NZ On Screen</h4>
                         <p class="list-group-item-text">NZ On Screen is the online showcase of New Zealand television, film and music video. All content is free to view – over 3,000 titles from the beginning of the screen industry to the present day to watch and enjoy.</p>
                     </a>
-                    <a id="IndexNZ" href="#" class="list-group-item disabled">
+                    <a id="IndexNZ" href="" class="list-group-item disabled">
                         <h4 class="list-group-item-heading">Index New Zealand</h4>
                         <p class="list-group-item-text">Index New Zealand is a database that contains abstracts and descriptions of articles from about 1000 New Zealand periodicals and newspapers published from the 1950s to the present day. The periodicals range from academic research journals to magazines.</p>
                     </a>
-                    <a id="EBSCO" href="#" class="list-group-item disabled">
+                    <a id="EBSCO" href="" class="list-group-item disabled">
                         <h4 class="list-group-item-heading">EBSCO Databases</h4>
                         <p class="list-group-item-text"><i>Explora</i> is EBSCO's interface for Schools and Public Libraries. Designed to meet the unique needs of its users, Explora supports both student research and classroom instruction</p>
                     </a>
-                    <a id="DIGITALNZ" href="#" class="list-group-item disabled">
+                    <a id="DIGITALNZ" href="" class="list-group-item disabled">
                         <h4 class="list-group-item-heading">Digital New Zealand</h4>
                         <p class="list-group-item-text">Uncover amazing aerial photos, posters, newspapers, artwork, research papers and more. Use DigitalNZ to discover millions of NZ items from the digital stores of libraries, museums, archives, communities, and government.</p>
                     </a>
@@ -102,7 +102,7 @@
             <br>
             <h4>Enter your Search Query</h4>
             <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                <span class="input-group-addon" id="querycontainer"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
                 <input type="text" id="querybox" value="" class="form-control" placeholder="Search Query">
             </div>
 
@@ -138,15 +138,31 @@
             
             <script>
                 function search() {
+                    var searchValue = document.getElementById("querybox").value;
+
                     var PapersPastAttr = document.getElementById('PapersPast').getAttribute("class");
                     if (PapersPastAttr == "list-group-item active") {
                         alert("Papers Past");
                         var Starter = "http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=q&results=1&txq=";
-                        var searchValue = document.getElementById("querybox").value;
                         alert(searchValue);
+                        
+                        //Replace space with +
+                        var searchurl = searchValue.replace(" ", "+");
+                        alert(searchurl);
+                        var StarterNQuery = Starter + searchurl;
+                        alert(StarterNQuery);
+                        
+                        //Dates:
+                        var dateYear = "";
+                        var dateDay = "";
+                        var dateMonth = "";
+                        
+                        
+                        
                         //Open the window:
                         //var finalURL = "http://www.google.co.nz";
                         //window.open(finalURL);
+//=&dafdq=01&dafmq=02&dafyq=1839&datdq=&datmq=&datyq=&tyq=&o=10&sf=&ssnip=&x=41&y=7&e=-------10--1----0--
                     }
                     else {
                         alert("You can currently only Seach Papers Past.");
