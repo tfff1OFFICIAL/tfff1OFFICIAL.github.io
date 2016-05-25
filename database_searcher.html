@@ -31,20 +31,11 @@
             $(function(){
                 $("#header").load("resources/header.html");
             });
-        </script> 
-        
-        <!-- Load Moment.js -->
-        <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-        <!-- Load Date & Time Picker: -->
-        
-        <script type="text/javascript" src="js/daterangepicker.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-        
-        <script>
-        
-            
-            
         </script>
+        
+        <!-- Date picker: -->
+        <script src="js/bootstrap-datepicker.js"></script>
+        <link href="css/datepicker.css" rel="stylesheet">
         
     </head>
     
@@ -106,32 +97,64 @@
                 <input type="text" id="querybox" value="" class="form-control" placeholder="Search Query">
             </div>
 
+            
+            
             Select a Date Range
             <br>
-            <input id="daterange" type="text" style="width:200px;" name="daterange"/>
-            
-            <script>
-                $(function() {
-                    
-                    $('input[name="daterange"]').daterangepicker(
-                        {
-                    locale: {
-                        format: 'DD-MMM-YYYY'
-                    },
-                    startDate: '01-01-2000',
-                    endDate: '02-01-2000'
-                });   
-                });
-            </script>
-            
+            <input class="span2" value="01-01-1900" id="dpd1" type="text">
+            <span> to </span>
+            <input class="span2" value="02-01-1900" id="dpd2" type="text">
             <br>
-            <label for="basic-url">Search Type</label>
-            <div class="radio">
-                <label><input name="SearchOpt" checked="" type="radio"> Exact Phrase</label>
-                <label><input name="SearchOpt" type="radio"> Any of your words</label>
-                <label><input name="SearchOpt" type="radio"> All of your words</label>
+            <br>
+            <div class="alert alert-warning">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;   </a>
+                <strong>Warning</strong> <span id="dateWarningMessage">A warning message goes here</span>
+            </div>
+            <script type="text/javascript">
+                $('.datepicker').datepicker();
+                var nowTemp = new Date();
+                var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+     
+                var checkin = $('#dpd1').datepicker({
+                format: 'dd-mm-yyyy',
+                    viewMode: 2
+                   // onRender: function(date) {
+                   //     return date.valueOf() < now.valueOf() ? 'disabled' : '';
+                   // }
+                }).on('changeDate', function(ev) {
+                    if (ev.date.valueOf() > checkout.date.valueOf()) {
+                        var newDate = new Date(ev.date)
+                        newDate.setDate(newDate.getDate() + 1);
+                        checkout.setValue(newDate);
+                    }
+                //    checkin.hide();
+                //    $('#dpd2')[0].focus();
+                }).data('datepicker');
+                
+                var checkout = $('#dpd2').datepicker({
+                    format: 'dd-mm-yyyy',
+                    viewMode: 2,
+                    onRender: function(date) {
+                        return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+                    }
+                //}).on('changeDate', function(ev) {
+                    //checkout.hide();
+                }).data('datepicker');       
+        </script>
+            
+            
+            <div class="radio disabled">
+                Select a Search Type<br>
+                <label><input id="filterExact" value="01-01-1900" name="SearchOpt" checked="" type="radio"> Exact Phrase</label>
+                <label><input id="filterAny" name="SearchOpt" type="radio"> Any of your words</label>
+                <label><input id="filterAll" name="SearchOpt" type="radio"> All of your words</label>
             </div>
 
+            <div class="alert alert-info">
+                <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;   </a>-->
+                <strong>Sorry!</strong> <span id="dateWarningMessage">Search type is not available  for PapersPast at the moment.</span>
+            </div>
+            
             <br>
             <button onclick="search();" style="width:100%" class="btn btn-lg btn-primary">Search on Selected Database</button>
             
@@ -142,27 +165,63 @@
 
                     var PapersPastAttr = document.getElementById('PapersPast').getAttribute("class");
                     if (PapersPastAttr == "list-group-item active") {
-                        alert("Papers Past");
+                        console.log("Database PapersPast has been selected");
                         var Starter = "http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=q&results=1&txq=";
-                        alert(searchValue);
+                       console.log("Search String is: " + searchValue);
                         
                         //Replace space with +
                         var searchurl = searchValue.replace(" ", "+");
-                        alert(searchurl);
+                        console.log("Replaced spaces with +: " + searchurl);
                         var StarterNQuery = Starter + searchurl;
-                        alert(StarterNQuery);
+                        console.log("Added Query to URL: " + StarterNQuery);
                         
                         //Dates:
-                        var dateYear = "";
-                        var dateDay = "";
-                        var dateMonth = "";
+                        //Start Date:
+                        var startDate = document.getElementById("dpd1");
+                        var startdateYear = startDate.value.split("-").splice(-1, 1);
+                        console.log("Start Year: " + startdateYear);
+                        var startdateMonth = startDate.value.split("-").splice(1, 1);
+                        console.log("Start Month: " + startdateMonth);
+                        var startdateDay = startDate.value.split("-").splice(0, 1);
+                        console.log("Start Day: " + startdateDay);
                         
+                        var URLStartDate = StarterNQuery + "&dafdq=" + startdateDay + "&dafmq=" + startdateMonth + "&dafyq=" + startdateYear;
+                        console.log("Added Start Date to URL: " + URLStartDate);
                         
+                        //End Date:
+                        var endDate = document.getElementById("dpd2");
+                        var enddateYear = endDate.value.split("-").splice(-1, 1);
+                        console.log("End Year: " + enddateYear);
+                        var enddateMonth = endDate.value.split("-").splice(1, 1);
+                        console.log("End Month: " + enddateMonth);
+                        var enddateDay = endDate.value.split("-").splice(0, 1);
+                        console.log("End Day: " + enddateDay);
+                        
+                        var URLEndDate = URLStartDate + "&datdq=" + enddateDay + "&datmq=" + enddateMonth + "&datyq=" + enddateYear;
+                        console.log("Added End Date to URL: " + URLEndDate);
+                        
+                        //Turn on Preview Images and 100 results per page:
+                        var URLSnippings = URLEndDate + "&o=100&ssnip=on";
+                        
+                        //Search Type:
+                        var finalURL = URLSnippings;
+                        //var finalURL;
+                        
+                        //if(document.getElementById("filterExact").checked) {
+                        //    finalURL = URLSnippings + "&t=2";
+                        //}
+                        //else if (document.getElementById("filterAny").checked) {
+                        //    finalURL = URLSnippings + "&t=1";
+                        //}
+                        //else if (document.getElementById("filterAll").checked) {
+                        //    finalURL = URLSnippings + "&t=1";
+                        //}
+                        //else {
+                        //    alert("Failed to determine Search Type! Please select one before continuing.");
+                        //}
                         
                         //Open the window:
-                        //var finalURL = "http://www.google.co.nz";
-                        //window.open(finalURL);
-//=&dafdq=01&dafmq=02&dafyq=1839&datdq=&datmq=&datyq=&tyq=&o=10&sf=&ssnip=&x=41&y=7&e=-------10--1----0--
+                        window.open(finalURL);
                     }
                     else {
                         alert("You can currently only Seach Papers Past.");
