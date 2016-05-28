@@ -37,6 +37,8 @@
         <script src="js/bootstrap-datepicker.js"></script>
         <link href="css/datepicker.css" rel="stylesheet">
         
+        <script src="js/databaseSelector.js">//This is called when a database is selected from the dropdown menu.</script>
+        
     </head>
     
     <body>
@@ -57,34 +59,34 @@
                 <div class="collapse" id="Databases">
                                 <div class="well nav navbar-nav" style="width:100%">
                 <div class="list-group">
-                    <a id="PapersPast" href="" class="list-group-item active">
+                    <button id="PapersPast" class="list-group-item active" onclick="databaseSelected('PapersPast');">
                         <h4 class="list-group-item-heading">Papers Past</h4>
                         <p class="list-group-item-text">Papers Past contains more than four million pages of digitised New Zealand newspapers and periodicals. The collection covers the years 1839 to 1948 and includes 132 publications from all regions of New Zealand. </p>
-                    </a>
-                    <a id="AucklandLibraries" href="" class="list-group-item disabled">
+                    </button>
+                    <button id="AucklandLibraries" class="list-group-item" onclick="databaseSelected('AucklandLibraries');">
                         <h4 class="list-group-item-heading">Auckland Libraries</h4>
                         <p class="list-group-item-text">The Auckland Super-City Libraries</p>
-                    </a>
-                    <a id="NZOnScreen" href="" class="list-group-item disabled">
+                    </button>
+                    <button id="NZOnScreen" class="list-group-item disabled" onclick="databaseSelected('NZOnScreen');">
                         <h4 class="list-group-item-heading">NZ On Screen</h4>
                         <p class="list-group-item-text">NZ On Screen is the online showcase of New Zealand television, film and music video. All content is free to view – over 3,000 titles from the beginning of the screen industry to the present day to watch and enjoy.</p>
-                    </a>
-                    <a id="IndexNZ" href="" class="list-group-item disabled">
+                    </button>
+                    <button id="IndexNZ" class="list-group-item disabled" onclick="databaseSelected('IndexNZ');">
                         <h4 class="list-group-item-heading">Index New Zealand</h4>
                         <p class="list-group-item-text">Index New Zealand is a database that contains abstracts and descriptions of articles from about 1000 New Zealand periodicals and newspapers published from the 1950s to the present day. The periodicals range from academic research journals to magazines.</p>
-                    </a>
-                    <a id="EBSCO" href="" class="list-group-item disabled">
+                    </button>
+                    <button id="EBSCO" class="list-group-item disabled" onclick="databaseSelected('EBSCO');">
                         <h4 class="list-group-item-heading">EBSCO Databases</h4>
                         <p class="list-group-item-text"><i>Explora</i> is EBSCO's interface for Schools and Public Libraries. Designed to meet the unique needs of its users, Explora supports both student research and classroom instruction</p>
-                    </a>
-                    <a id="DIGITALNZ" href="" class="list-group-item disabled">
+                    </button>
+                    <button id="DIGITALNZ" class="list-group-item disabled" onclick="databaseSelected('DIGITALNZ');">
                         <h4 class="list-group-item-heading">Digital New Zealand</h4>
                         <p class="list-group-item-text">Uncover amazing aerial photos, posters, newspapers, artwork, research papers and more. Use DigitalNZ to discover millions of NZ items from the digital stores of libraries, museums, archives, communities, and government.</p>
-                    </a>
-                    <a id="NZETC" href="#" class="list-group-item disabled">
+                    </button>
+                    <button id="NZETC" class="list-group-item disabled" onclick="databaseSelected('NZETC');">
                         <h4 class="list-group-item-heading">NZ Electronic Text Centre</h4>
                         <p class="list-group-item-text">The New Zealand Electronic Text Collection comprises significant New Zealand and Pacific Island texts and materials held by Victoria University of Wellington Library.</p>
-                    </a>
+                    </button>
                 </div>
                     </div>
                 
