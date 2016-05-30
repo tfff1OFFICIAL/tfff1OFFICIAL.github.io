@@ -8,7 +8,14 @@ kramdown:
 defaults:
   -
     scope:
-      path: "docs"
+      path: "Docs"
       type: "pages"
     values:
       layout: "default"
+  -
+    scope:
+      path: "Docs/ModInstaller"
+      type: "pages"
+    values:
+      layout: "default"
+      categories: "ModInstaller"

@@ -1,4 +1,15 @@
 ---
 layout: head
+categories: ModInstaller
 ---
 <div id="header"></div>
+<div class="container">
+    <div class="jumbotron">
+        <h1>{{page.title}}</h1>
+        <a class="btn btn-default btn-lg" href="/Docs/{{page.categories}}">Back to Docs Home</a>
+    </div>
+    {{content}}
+    <br>
+    <a class="btn btn-primary btn-lg btn-block" href="/Docs/{{page.categories}}">Back to Docs Home</a>
+    <br>
+</div>
