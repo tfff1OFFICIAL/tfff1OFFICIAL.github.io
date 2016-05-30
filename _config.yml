@@ -8,7 +8,7 @@ kramdown:
 defaults:
   -
     scope:
-	  path: "docs"
-	  type: "pages"
-	values:
-	  layout: "default"
+      path: "docs"
+      type: "pages"
+    values:
+      layout: "default"

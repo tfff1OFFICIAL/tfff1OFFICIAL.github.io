@@ -1,0 +1,236 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Tfff1's Website - Database Searcher</title>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,400italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        
+        <!-- BOOTSTRAP: -->
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        
+        <!-- Load Header -->
+        
+        <script src="js/menu.js"></script>
+        
+        <script> 
+            $(function(){
+                $("#header").load("resources/header.html");
+            });
+        </script>
+        
+        <!-- Date picker: -->
+        <script src="js/bootstrap-datepicker.js"></script>
+        <link href="css/datepicker.css" rel="stylesheet">
+        
+        <script src="js/databaseSelector.js">//This is called when a database is selected from the dropdown menu.</script>
+        
+    </head>
+    
+    <body>
+        <div id="header"></div>
+        
+        <div class="container">
+            <div class="jumbotron">
+        <h2>Database Searcher</h2>
+        <p>This is aimed at students who would like to easily browser the multiple databases available to them.</p>
+        <p class="text-danger">NOTE: This only works with New Zealand resources and may not work if you are outside of New Zealand. PS: If you don't know where New Zealand is, this definitely isn't for you.</p>
+      </div>
+            <h4>Select a Database to Search</h4>
+                <a id="LunchMBPHeader" class="list-group-item" href="#" data-target="#Databases" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="LunchMBP">
+                    Show / Hide Databases
+                    <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+                </a>
+                
+                <div class="collapse" id="Databases">
+                                <div class="well nav navbar-nav" style="width:100%">
+                <div class="list-group">
+                    <button id="PapersPast" class="list-group-item active" onclick="databaseSelected('PapersPast');">
+                        <h4 class="list-group-item-heading">Papers Past</h4>
+                        <p class="list-group-item-text">Papers Past contains more than four million pages of digitised New Zealand newspapers and periodicals. The collection covers the years 1839 to 1948 and includes 132 publications from all regions of New Zealand. </p>
+                    </button>
+                    <button id="AucklandLibraries" class="list-group-item" onclick="databaseSelected('AucklandLibraries');">
+                        <h4 class="list-group-item-heading">Auckland Libraries</h4>
+                        <p class="list-group-item-text">The Auckland Super-City Libraries</p>
+                    </button>
+                    <button id="NZOnScreen" class="list-group-item disabled" onclick="databaseSelected('NZOnScreen');">
+                        <h4 class="list-group-item-heading">NZ On Screen</h4>
+                        <p class="list-group-item-text">NZ On Screen is the online showcase of New Zealand television, film and music video. All content is free to view – over 3,000 titles from the beginning of the screen industry to the present day to watch and enjoy.</p>
+                    </button>
+                    <button id="IndexNZ" class="list-group-item disabled" onclick="databaseSelected('IndexNZ');">
+                        <h4 class="list-group-item-heading">Index New Zealand</h4>
+                        <p class="list-group-item-text">Index New Zealand is a database that contains abstracts and descriptions of articles from about 1000 New Zealand periodicals and newspapers published from the 1950s to the present day. The periodicals range from academic research journals to magazines.</p>
+                    </button>
+                    <button id="EBSCO" class="list-group-item disabled" onclick="databaseSelected('EBSCO');">
+                        <h4 class="list-group-item-heading">EBSCO Databases</h4>
+                        <p class="list-group-item-text"><i>Explora</i> is EBSCO's interface for Schools and Public Libraries. Designed to meet the unique needs of its users, Explora supports both student research and classroom instruction</p>
+                    </button>
+                    <button id="DIGITALNZ" class="list-group-item disabled" onclick="databaseSelected('DIGITALNZ');">
+                        <h4 class="list-group-item-heading">Digital New Zealand</h4>
+                        <p class="list-group-item-text">Uncover amazing aerial photos, posters, newspapers, artwork, research papers and more. Use DigitalNZ to discover millions of NZ items from the digital stores of libraries, museums, archives, communities, and government.</p>
+                    </button>
+                    <button id="NZETC" class="list-group-item disabled" onclick="databaseSelected('NZETC');">
+                        <h4 class="list-group-item-heading">NZ Electronic Text Centre</h4>
+                        <p class="list-group-item-text">The New Zealand Electronic Text Collection comprises significant New Zealand and Pacific Island texts and materials held by Victoria University of Wellington Library.</p>
+                    </button>
+                </div>
+                    </div>
+                
+            </div>
+            
+            <br>
+            <h4>Enter your Search Query</h4>
+            <div class="input-group">
+                <span class="input-group-addon" id="querycontainer"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                <input type="text" id="querybox" value="" class="form-control" placeholder="Search Query">
+            </div>
+
+            
+            
+            Select a Date Range
+            <br>
+            <input class="span2" value="01-01-1900" id="dpd1" type="text">
+            <span> to </span>
+            <input class="span2" value="02-01-1900" id="dpd2" type="text">
+            <br>
+            <br>
+            <div class="alert alert-warning">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;   </a>
+                <strong>Warning</strong> <span id="dateWarningMessage">A warning message goes here</span>
+            </div>
+            <script type="text/javascript">
+                $('.datepicker').datepicker();
+                var nowTemp = new Date();
+                var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+     
+                var checkin = $('#dpd1').datepicker({
+                format: 'dd-mm-yyyy',
+                    viewMode: 2
+                   // onRender: function(date) {
+                   //     return date.valueOf() < now.valueOf() ? 'disabled' : '';
+                   // }
+                }).on('changeDate', function(ev) {
+                    if (ev.date.valueOf() > checkout.date.valueOf()) {
+                        var newDate = new Date(ev.date)
+                        newDate.setDate(newDate.getDate() + 1);
+                        checkout.setValue(newDate);
+                    }
+                //    checkin.hide();
+                //    $('#dpd2')[0].focus();
+                }).data('datepicker');
+                
+                var checkout = $('#dpd2').datepicker({
+                    format: 'dd-mm-yyyy',
+                    viewMode: 2,
+                    onRender: function(date) {
+                        return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+                    }
+                //}).on('changeDate', function(ev) {
+                    //checkout.hide();
+                }).data('datepicker');       
+        </script>
+            
+            
+            <div class="radio disabled">
+                Select a Search Type<br>
+                <label><input id="filterExact" value="01-01-1900" name="SearchOpt" type="radio"> Exact Phrase</label>
+                <label><input id="filterAny" name="SearchOpt" type="radio"> Any of your words</label>
+                <label><input id="filterAll" checked="" name="SearchOpt" type="radio"> All of your words</label>
+            </div>
+
+            <div class="alert alert-info">
+                <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;   </a>-->
+                <strong>Sorry!</strong> <span id="dateWarningMessage">Search type is not available  for PapersPast at the moment.</span>
+            </div>
+            
+            <br>
+            <button onclick="search();" style="width:100%" class="btn btn-lg btn-primary">Search on Selected Database</button>
+            
+            
+            <script>
+                function search() {
+                    var searchValue = document.getElementById("querybox").value;
+
+                    var PapersPastAttr = document.getElementById('PapersPast').getAttribute("class");
+                    if (PapersPastAttr == "list-group-item active") {
+                        console.log("Database PapersPast has been selected");
+                        var Starter = "http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=q&results=1&txq=";
+                       console.log("Search String is: " + searchValue);
+                        
+                        //Replace space with +
+                        var searchurl = searchValue.replace(" ", "+");
+                        console.log("Replaced spaces with +: " + searchurl);
+                        var StarterNQuery = Starter + searchurl;
+                        console.log("Added Query to URL: " + StarterNQuery);
+                        
+                        //Dates:
+                        //Start Date:
+                        var startDate = document.getElementById("dpd1");
+                        var startdateYear = startDate.value.split("-").splice(-1, 1);
+                        console.log("Start Year: " + startdateYear);
+                        var startdateMonth = startDate.value.split("-").splice(1, 1);
+                        console.log("Start Month: " + startdateMonth);
+                        var startdateDay = startDate.value.split("-").splice(0, 1);
+                        console.log("Start Day: " + startdateDay);
+                        
+                        var URLStartDate = StarterNQuery + "&dafdq=" + startdateDay + "&dafmq=" + startdateMonth + "&dafyq=" + startdateYear;
+                        console.log("Added Start Date to URL: " + URLStartDate);
+                        
+                        //End Date:
+                        var endDate = document.getElementById("dpd2");
+                        var enddateYear = endDate.value.split("-").splice(-1, 1);
+                        console.log("End Year: " + enddateYear);
+                        var enddateMonth = endDate.value.split("-").splice(1, 1);
+                        console.log("End Month: " + enddateMonth);
+                        var enddateDay = endDate.value.split("-").splice(0, 1);
+                        console.log("End Day: " + enddateDay);
+                        
+                        var URLEndDate = URLStartDate + "&datdq=" + enddateDay + "&datmq=" + enddateMonth + "&datyq=" + enddateYear;
+                        console.log("Added End Date to URL: " + URLEndDate);
+                        
+                        //Turn on Preview Images and 100 results per page:
+                        var URLSnippings = URLEndDate + "&o=100&ssnip=on";
+                        
+                        //Search Type:
+                        var finalURL = URLSnippings;
+                        //var finalURL;
+                        
+                        //if(document.getElementById("filterExact").checked) {
+                        //    finalURL = URLSnippings + "&t=2";
+                        //}
+                        //else if (document.getElementById("filterAny").checked) {
+                        //    finalURL = URLSnippings + "&t=1";
+                        //}
+                        //else if (document.getElementById("filterAll").checked) {
+                        //    finalURL = URLSnippings + "&t=1";
+                        //}
+                        //else {
+                        //    alert("Failed to determine Search Type! Please select one before continuing.");
+                        //}
+                        
+                        //Open the window:
+                        window.open(finalURL);
+                    }
+                    else {
+                        alert("You can currently only Seach Papers Past.");
+                    }
+                }
+            </script>
+            
+        </div>
+    </body>
+</html>
