@@ -79,5 +79,10 @@ function databaseSelected(idOfSender) {
         document.getElementById('dateRange').style.display = "none";
         
     }
+    else if (idOfSender == "DIGITALNZ") {
+        document.getElementById('searchTypeWarningMessage').innerHTML = "Search type is not available for Digital NZ at the moment!";
+        document.getElementById('searchType').setAttribute('class', 'radio disabled');
+        document.getElementById('dateRange').style.display = "block";
+    }
     
             }
