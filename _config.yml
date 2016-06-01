@@ -19,3 +19,24 @@ defaults:
     values:
       layout: "default"
       categories: "ModInstaller"
+  -
+    scope:
+      path: "Docs/ServerInstaller"
+      type: "pages"
+    values:
+      layout: "default"
+      categories: "ServerInstaller"
+  -
+    scope:
+      path: "Docs/SiteTester"
+      type: "pages"
+    values:
+      layout: "default"
+      categories: "SiteTester"
+  -
+    scope:
+      path: "Docs/DatabaseSearcher"
+      type: "pages"
+    values:
+      layout: "default"
+      categories: "DatabaseSearcher"

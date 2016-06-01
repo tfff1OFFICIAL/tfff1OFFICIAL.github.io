@@ -53,11 +53,31 @@ function databaseSelected(idOfSender) {
                     else {
                         NZETC.setAttribute("class", "list-group-item");
                     }
-
-                    document.getElementById(idOfSender).setAttribute("class", "list-group-item active");
+                    var toSelect = document.getElementById(idOfSender)
+                    toSelect.setAttribute("class", "list-group-item active");
+                    
+                    idOfSenderSpaces = idOfSender.replace(/([A-Z])/g, ' $1').trim();
+                    
+                    document.getElementById('databaseName').innerHTML = idOfSenderSpaces;
+                    
                     console.log("Selection Successful!");
                 }
                 else {
                     console.log("Didn't select, Element is either already selected or disabled.")
                 }
+    
+    if (idOfSender == "PapersPast") {
+        document.getElementById('searchTypeWarningMessage').innerHTML = "Search type is not available for Papers Past at the moment!";
+        document.getElementById('dateWarningBox').style.display = "none";
+        document.getElementById('searchType').style.display = "none";
+        document.getElementById('dateRange').style.display = "block";
+    }
+    else if (idOfSender == "NZOnScreen") {
+        document.getElementById('searchTypeWarningMessage').innerHTML = "Date Selection and Search type is not available for NZ On Screen at the moment!";
+        document.getElementById('dateWarningMessage').innerHTML = "You can not select a date range for NZ On Screen.";
+        document.getElementById('searchType').setAttribute('class', 'radio disabled');
+        document.getElementById('dateRange').style.display = "none";
+        
+    }
+    
             }

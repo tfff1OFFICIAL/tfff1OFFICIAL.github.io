@@ -39,6 +39,12 @@
         
         <script src="js/databaseSelector.js">//This is called when a database is selected from the dropdown menu.</script>
         
+        <script>
+            $(window).ready(function() {
+               databaseSelected('PapersPast'); 
+            });
+        </script>
+        
     </head>
     
     <body>
@@ -47,7 +53,7 @@
         <div class="container">
             <div class="jumbotron">
         <h2>Database Searcher</h2>
-        <p>This is aimed at students who would like to easily browser the multiple databases available to them.</p>
+        <p>This is aimed at students who would like to easily browse the range databases and websites available to them.</p>
         <p class="text-danger">NOTE: This only works with New Zealand resources and may not work if you are outside of New Zealand. PS: If you don't know where New Zealand is, this definitely isn't for you.</p>
       </div>
             <h4>Select a Database to Search</h4>
@@ -59,15 +65,15 @@
                 <div class="collapse" id="Databases">
                                 <div class="well nav navbar-nav" style="width:100%">
                 <div class="list-group">
-                    <button id="PapersPast" class="list-group-item active" onclick="databaseSelected('PapersPast');">
+                    <button id="PapersPast" class="list-group-item" onclick="databaseSelected('PapersPast');">
                         <h4 class="list-group-item-heading">Papers Past</h4>
                         <p class="list-group-item-text">Papers Past contains more than four million pages of digitised New Zealand newspapers and periodicals. The collection covers the years 1839 to 1948 and includes 132 publications from all regions of New Zealand. </p>
                     </button>
-                    <button id="AucklandLibraries" class="list-group-item" onclick="databaseSelected('AucklandLibraries');">
+                    <button id="AucklandLibraries" class="list-group-item disabled" onclick="databaseSelected('AucklandLibraries');">
                         <h4 class="list-group-item-heading">Auckland Libraries</h4>
                         <p class="list-group-item-text">The Auckland Super-City Libraries</p>
                     </button>
-                    <button id="NZOnScreen" class="list-group-item disabled" onclick="databaseSelected('NZOnScreen');">
+                    <button id="NZOnScreen" class="list-group-item" onclick="databaseSelected('NZOnScreen');">
                         <h4 class="list-group-item-heading">NZ On Screen</h4>
                         <p class="list-group-item-text">NZ On Screen is the online showcase of New Zealand television, film and music video. All content is free to view – over 3,000 titles from the beginning of the screen industry to the present day to watch and enjoy.</p>
                     </button>
@@ -92,7 +98,8 @@
                 
             </div>
             
-            <br>
+            <h4>Selected: <span id="databaseName">None</span></h4>
+            <div style="height:5px;"></div>
             <h4>Enter your Search Query</h4>
             <div class="input-group">
                 <span class="input-group-addon" id="querycontainer"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
@@ -100,18 +107,21 @@
             </div>
 
             
-            
-            Select a Date Range
-            <br>
-            <input class="span2" value="01-01-1900" id="dpd1" type="text">
-            <span> to </span>
-            <input class="span2" value="02-01-1900" id="dpd2" type="text">
-            <br>
-            <br>
-            <div class="alert alert-warning">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;   </a>
-                <strong>Warning</strong> <span id="dateWarningMessage">A warning message goes here</span>
+            <div id="dateRange">
+                Select a Date Range
+                <br>
+                <input class="span2" value="01-01-1900" id="dpd1" type="text">
+                <span> to </span>
+                <input class="span2" value="02-01-1900" id="dpd2" type="text">
+                <br>
             </div>
+            
+            <br>
+            <div id="dateWarningBox" class="alert alert-warning">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;   </a>
+                <strong>Whoops!</strong> <span id="dateWarningMessage">A warning message goes here</span>
+            </div>
+            
             <script type="text/javascript">
                 $('.datepicker').datepicker();
                 var nowTemp = new Date();
@@ -145,7 +155,7 @@
         </script>
             
             
-            <div class="radio disabled">
+            <div id="searchType" class="radio disabled">
                 Select a Search Type<br>
                 <label><input id="filterExact" value="01-01-1900" name="SearchOpt" type="radio"> Exact Phrase</label>
                 <label><input id="filterAny" name="SearchOpt" type="radio"> Any of your words</label>
@@ -154,7 +164,7 @@
 
             <div class="alert alert-info">
                 <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;   </a>-->
-                <strong>Sorry!</strong> <span id="dateWarningMessage">Search type is not available  for PapersPast at the moment.</span>
+                <strong>Sorry!</strong> <span id="searchTypeWarningMessage">Search type is not available  for PapersPast at the moment.</span>
             </div>
             
             <br>
@@ -164,8 +174,9 @@
             <script>
                 function search() {
                     var searchValue = document.getElementById("querybox").value;
-
+                    var NZOnScreenAttr = document.getElementById('NZOnScreen').getAttribute("class");
                     var PapersPastAttr = document.getElementById('PapersPast').getAttribute("class");
+                    
                     if (PapersPastAttr == "list-group-item active") {
                         console.log("Database PapersPast has been selected");
                         var Starter = "http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=q&results=1&txq=";
@@ -223,6 +234,13 @@
                         //}
                         
                         //Open the window:
+                        window.open(finalURL);
+                    }
+                    else if (NZOnScreenAttr == "list-group-item active") {
+                        //Replace space with +
+                        var searchurl = searchValue.replace(" ", "+");
+                        console.log("Replaced spaces with +: " + searchurl);
+                        var finalURL = "https://www.nzonscreen.com/search?search_term=" + searchurl + "&commit=Search";
                         window.open(finalURL);
                     }
                     else {
