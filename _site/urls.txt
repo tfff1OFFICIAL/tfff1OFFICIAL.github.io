@@ -1,3 +1,0 @@
-Exact Phrase	 : http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=q&hs=1&r=1&results=1&t=2&txq=hi+There&pbq=&dafdq=02&dafmq=01&dafyq=&datdq=03&datmq=03&datyq=&tyq=&o=100&sf=&ssnip=&ssnip=on&x=45&y=12&e=02-01--03-03---100--1--on--1hi+There--
-Any of your words: http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=q&hs=1&r=1&results=1&t=1&txq=hi+There&pbq=&dafdq=02&dafmq=01&dafyq=&datdq=03&datmq=03&datyq=&tyq=&o=100&sf=&ssnip=&ssnip=on&x=49&y=19&e=02-01--03-03---100--1--on--2hi+There--
-All of your words: http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=q&hs=1&r=1&results=1&t=1&txq=hi+There&pbq=&dafdq=02&dafmq=01&dafyq=&datdq=03&datmq=03&datyq=&tyq=&o=100&sf=&ssnip=&ssnip=on&x=53&y=14&e=02-01--03-03---100--1--on--1hi+There--
