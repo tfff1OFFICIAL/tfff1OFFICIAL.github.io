@@ -10,6 +10,10 @@
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,400italic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="css/main.css">
         
+        <!-- Load Prism Syntax Highlighter: -->
+        <link rel="stylesheet" type="text/css" href="/css/prism.css">
+        <script type="text/javascript" src="/js/prism.js"></script>
+        
         <!-- BOOTSTRAP: -->
         
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -24,7 +28,7 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         
-        <script src="jquery.js"></script>
+        <script src="jquery.js"></script>    
         
         <!-- Load Header -->
         <script src="js/menu.js"></script>
@@ -35,8 +39,14 @@
             });
         </script> 
     </head>
-    
+
     <body>
+         
+    <script>
+        function download() {
+            location.href="https://raw.githubusercontent.com/tfff1OFFICIAL/Multilingual-Websites/master/js/tfff1s-multilingual.js";
+        }
+    </script>
         <div id="header"></div>
         
         <div class="container">
@@ -44,7 +54,7 @@
             <div class="jumbotron">
                 <h1>tfff1's Multilingual Websites</h1>
                 <p>A tiny Javascript library that allows for easy translation management for any website.</p>
-                <a href="https://raw.githubusercontent.com/tfff1OFFICIAL/Multilingual-Websites/master/js/tfff1s-multilingual.js" class="btn btn-primary btn-lg">Download</a>
+                <button onclick="download();" class="btn btn-primary btn-lg">Download</button>
                 <a href="https://github.com/tfff1OFFICIAL/Multilingual-Websites" class="btn btn-default btn-lg"><i class="fa fa-github" aria-hidden="true"></i>
  View on Github</a>
             </div>
@@ -52,11 +62,180 @@
             <h2>Contents</h2>
             
             <div class="well">
-                <a>Overview</a><br>
-                <a>Getting Started</a><br>
-                <a>Customisation</a>
+                <a href="#overview">Overview</a><br>
+                <a href="#start">Getting Started</a><br>
+                <a href="#usage">Usage</a><br>
+                <a href="#customisation">Customisation</a>
             </div>
             
+            <div id="overview">
+                <h3>Overview</h3>
+                <p>So, what is this multilingual thing anyway? Multilinugal, or multiple language, websites are sites that can be viewed in more than one language. This plugin makes creating a multilingual site a breeze through the use of a new 'lang' element.</p>
+            </div>
+            
+            <div id="start">
+                <h3>Getting Started</h3>
+                <p>Step 1:</p>
+                <button onclick="download();" class="btn btn-primary">Download the Library</button>
+                <br><br>
+                <p>Step 2:</p>
+                Reference Multilingual &amp; JQuery:
+                <pre class="line-numbers">
+                    <code class="language-markup">
+&lt;script type="text/javascript" src="/go/to/folder/tfff1s-multilingual.js"&gt;&lt;/script&gt;
+&lt;script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"&gt;&lt;/script&gt;
+                    </code>
+                </pre>
+                <br>
+                <p id="start-3">Step 3:</p>
+                <p>Create a Language Folder somewhere on your website's filesystem. This is where you will put all of your language files.</p>
+                <br>
+                <p>Step 4:</p>
+                <p>Create language files in this folder using ll-cc naming convention (ll = Language Subtag, cc = Country Subtag). For the official Language and Country Subtag Registry go to: <a href="http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry</a> or the unofficial searchable Registry: <a href="https://r12a.github.io/apps/subtags/">https://r12a.github.io/apps/subtags/</a>.<br>The W3 spec can be found <a href="https://www.w3.org/International/questions/qa-html-language-declarations#langvalues">here</a>.<br>Call the file ll-cc.lang, replacing ll with the Language Subtag and the cc with the Country Subtag as detailed above.</p>
+                <br>
+                <p>Step 5:</p>
+                <p>Set your HTML page's default language in the html element so it looks like:</p>
+                <pre><code class="language-markup">&lt;html lang="ll-cc"&gt;</code></pre>
+                <br>
+                <br>
+                <p>Step 6:</p>
+                <p>Activate tfff1's multilingual websites by inserting the following in to the header of your web page (after JQuery and multilingual.js, replacing "To-Language-Folder" with the location of your Language Folder from <a href="#start-3">Step 4</a>):</p>
+                <pre>
+                    <code class="language-javascript">
+&lt;script type="text/javascript&gt;
+  $(window).ready(function() {
+    var attribute = $('html').attr('lang');
+    loadLanguage(attribute, "To-Language-Folder");
+  }); 
+&lt;/script&gt;
+                    </code>
+                </pre>
+                <br><br>
+                <h2 id="usage">Usage</h2>
+                
+                <div class="well">
+                    <a href="#creatingElement">Creating Language-changing Elements</a><br>
+                    <a href="#switchingLanguage">Changing Language</a><br>
+                    <a href="#changingPages">Keeping the Same language across pages</a><br>
+                    <a href="#URLlang">Setting the language from URL</a>
+                </div>
+                
+                <h3 id="creatingElement">Creating a language-changing element</h3>
+                <p>There are two ways to create a language-changing element, one is easily scalable and one isn't: </p>
+                <div class="well">
+                    <a href="#element-1">First Way (Recommended, Easily Scalable)</a><br>
+                    <a href="#element-2">Second Way (Slightly Easier, Not Scalable)</a>
+                </div>
+                <h4 id="element-1">First Way - External Language Options</h4>
+                
+                <p>With this way languages are saved in external files named (as mentioned in <a href="#start-3">Step 4</a>) ll-cc.lang</p>
+                <br>
+                <h4>NOTE: In this tutorial I will be using en-us and fr-fr as my two languages. In use, just change these to what ever language/country you like, the same idea still applies.</h4>
+                <h4>The Mission</h4>
+                <p>To recreate the code below in both English(United States) &amp; French(France).</p>
+                <pre>
+                    <code class="language-markup">
+&lt;h1&gt;Hi&lt;/h1&gt;
+&lt;div&gt;&lt;a href="www.example.com"&gt;Example Website&lt;/a&gt;&lt;/div&gt;
+                    </code>
+                </pre>
+                <br>
+                <h4>Method</h4>
+                <p>Step 1:</p>
+                <p>Create two files called "en-us.lang" &amp; "fr-fr.lang" in my languages Directory.</p>
+                <br>
+                <p>Step 2:</p>
+                <p>In my "en-us.lang" file I will add:</p>
+                <pre>
+
+<span class="token attr-value"><span class="token attr-name">header</span><span class="token punctuation">=</span>Hi</span>
+<span class="token attr-value"><span class="token attr-name">example_site</span><span class="token punctuation">=</span>Example Website</span>
+
+                </pre>
+                <br>
+                <p>In my "fr-fr.lang" file I will add:</p>
+                <pre>
+<span class="token attr-value"><span class="token attr-name">header</span><span class="token punctuation">=</span>Salut</span>
+<span class="token attr-value"><span class="token attr-name">example_site</span><span class="token punctuation">=</span>Exemple Site</span>
+                </pre>
+                <br><br>
+                <p>Step 2:</p>
+                <p>I will now change the HTML to look like this:</p>
+                <pre>
+                    <code class="language-markup">
+&lt;h1&gt;&lt;lang langID="header"&gt;&lt;/lang&gt;&lt;/h1&gt;
+&lt;div&gt;&lt;a href="www.example.com"&gt;&lt;lang langID="example_site"&gt;&lt;/lang&gt;&lt;/a&gt;&lt;/div&gt;
+                    </code>
+                </pre>
+                
+                Now if I change the language to French it will look like:
+                <br>
+                <pre>
+                    <code class="language-markup">
+&lt;h1&gt;Salut&lt;/h1&gt;
+&lt;div&gt;&lt;a href="www.example.com"&gt;Exemple Site&lt;/a&gt;&lt;/div&gt;
+                    </code>
+                </pre>
+                And in English it will look like:<br>
+                <pre>
+                    <code class="language-markup">
+&lt;h1&gt;Hi&lt;/h1&gt;
+&lt;div&gt;&lt;a href="www.example.com"&gt;Example Website&lt;/a&gt;&lt;/div&gt;
+                    </code>
+                </pre>
+                <br>
+                This way works best and is most easily scalable to any number of different languages.
+                <h4 id="element-2">Second Way - Internal Language Options</h4>
+                <p>This way embeds the language information in the HTML tag of the lang element it affects. For Example, the above example, when finished, would look like: </p>
+                <pre>
+                    <code class="language-markup">
+&lt;h1&gt;&lt;lang en-us="Hi" fr-fr="Salut"&gt;&lt;/lang&gt;&lt;/h1&gt;
+&lt;div&gt;&lt;a href="www.example.com"&gt;&lt;lang en-us="Example Website" fr-fr="Exemple Site"&gt;&lt;/lang&gt;&lt;/a&gt;&lt;/div&gt;
+                    </code>
+                </pre>
+                <br>
+                <p>This would dramatically increase download times for your website, as instead of downloading one language's worth of data, the user will be downloading the data for all of the language your website supports.</p>
+                <br>
+                <h3 id="switchingLanguage">Switching Languages</h3>
+                <p>Switching languages is very easy. Simple use the following javascript code: (ll = Language, cc = Country)</p>
+                
+                <pre>
+                    <code class="language-javascript">
+changeLanguage('ll-cc');
+                    </code>
+                </pre>
+                <br>
+                <h3 id="changingPages">Same language accross pages</h3>
+                <p>Keeping the language the same across all of your pages is remarkably easy. Simple execute a javascript function similar to that below:</p>
+                
+                <pre>
+                    <code class="language-javascript">
+location.href=langNavigate('/new_page.html');
+                    </code>
+                </pre>
+                <p>This will return "/new_page?lang=ll-cc" (ll = Language, cc = Country)</p>
+                <br>
+                <h3 id="URLlang">Setting Language from URL</h3>
+                <p>You can easily set the page's language from the URL. Simple add ?lang= ll-cc (ll = Language, cc = Country) as demonstrated below:</p>
+                
+                <pre>
+                    <code class="language-http">
+http://www.example.com/?lang=en-us
+                    </code>
+                </pre>
+                <p>This will display the page in en-us.</p>
+            </div>
+            
+            <div id="customisation">
+                <h3>Customisation</h3>
+                Nothing here yet!
+            </div>
+            <br>
+            <button onclick="download();" class="btn btn-primary btn-lg" style="width:100%">Download</button>
+            <br>
+            <br>
+            <button onclick="$('html,body').animate({scrollTop: 0}, 700);" class="btn btn-default" style="width:100%"><span style="font-size:20px;"><i class="fa fa-angle-up" aria-hidden="true"></i> Back to top</span></button>
+            <br><br>
         </div>
     </body>
 </html>

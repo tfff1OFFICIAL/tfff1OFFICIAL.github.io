@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Tfff1's Website</title>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,400italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        
+        <!-- Load Prism Syntax Highlighter: -->
+        <link rel="stylesheet" type="text/css" href="/css/prism.css">
+        <script type="text/javascript" src="/js/prism.js"></script>
+        
+        <!-- BOOTSTRAP: -->
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        
+        <script src="jquery.js"></script>    
+        
+        <!-- Load Header -->
+        <script src="js/menu.js"></script>
+        
+        <script> 
+            $(function(){
+                $("#header").load("/resources/header.html"); 
+            });
+        </script>
+        
+        <script type="text/javascript">
+            // Getting Info From URL
+            $.urlParam = function(name) {
+                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                if (results === null) {
+                    return null;
+                } else {
+                    return results[1] || 0;
+                }
+            };
+            
+            $(document).ready(function() {
+                var errorTitle = $.urlParam("title");
+                var errorType = $.urlParam("type");
+                var errorTime = $.urlParam("time");
+                var errorMessage = $.urlParam("message");
+                document.getElementById("errTitle").innerHTML = decodeURI(errorTitle);
+                document.getElementById("errType").innerHTML = decodeURI(errorType);
+                document.getElementById("errTime").innerHTML = decodeURI(errorTime);
+                document.getElementById("errMessage").innerHTML = decodeURI(errorMessage);
+            });            
+        </script>
+        
+    </head>
+    <body>
+        <div id="header"></div>
+        <div class="container">
+            <div class="jumbotron">
+                <h3>This is a page that displays error messages from tfff1's Multilingual Websites in a way that is easy to view.</h3>
+            </div>
+            <h3>Error Title: <span id="errTitle">Nothing Here</span></h3>
+            <h3>Error Type: <span id="errType">Nothing Here</span></h3>
+            <h3>Error Time: <span id="errTime">Nothing Here</span></h3>
+            <h3>Error Message:</h3>
+            <div class="well">
+                <span id="errMessage">Nothing Here</span>
+            </div>
+        </div>
+    </body>
+    
+</html>
