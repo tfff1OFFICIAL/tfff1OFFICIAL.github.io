@@ -93,9 +93,12 @@
                         <h4 class="list-group-item-heading">NZ Electronic Text Centre</h4>
                         <p class="list-group-item-text">The New Zealand Electronic Text Collection comprises significant New Zealand and Pacific Island texts and materials held by Victoria University of Wellington Library.</p>
                     </button>
+                    <button id="Teara" class="list-group-item" onclick="databaseSelected('Teara');">
+                        <h4 class="list-group-item-heading">Teara</h4>
+                        <p class="list-group-item-text">The Encyclopedia of New Zealand is a comprehensive guide to our peoples, natural environment, history, culture, economy and society.</p>
+                    </button>
                 </div>
                     </div>
-                
             </div>
             
             <h4>Selected: <span id="databaseName">None</span></h4>
@@ -176,6 +179,7 @@
                     var searchValue = document.getElementById("querybox").value;
                     var NZOnScreenAttr = document.getElementById('NZOnScreen').getAttribute("class");
                     var PapersPastAttr = document.getElementById('PapersPast').getAttribute("class");
+                    var DigitalNZAttr = document.getElementById('DIGITALNZ').getAttribute("class");
                     
                     if (PapersPastAttr == "list-group-item active") {
                         console.log("Database PapersPast has been selected");
@@ -241,6 +245,21 @@
                         var searchurl = searchValue.replace(" ", "+");
                         console.log("Replaced spaces with +: " + searchurl);
                         var finalURL = "https://www.nzonscreen.com/search?search_term=" + searchurl + "&commit=Search";
+                        window.open(finalURL);
+                    }
+                    else if (DigitalNZAttr == "list-group-item active") {
+                        //Replace space with +
+                        var searchurl = searchValue.replace(" ", "+");
+                        console.log("Replaced spaces with +: " + searchurl);
+                        //Get Date
+                        var endDate = document.getElementById("dpd2");
+                        var enddateYear = endDate.value.split("-").splice(-1, 1);
+                        console.log("End Year: " + enddateYear);
+                        
+                        var startDate = document.getElementById("dpd1");
+                        var startdateYear = startDate.value.split("-").splice(-1, 1);
+                        console.log("Start Year: " + startdateYear);
+                        var finalURL = "http://www.digitalnz.org/records?i[year]=[" + startdateYear + "+TO+" + enddateYear + "]&text=" + searchurl;
                         window.open(finalURL);
                     }
                     else {
