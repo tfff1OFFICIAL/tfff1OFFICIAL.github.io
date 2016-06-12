@@ -89,7 +89,7 @@
                         <h4 class="list-group-item-heading">Digital New Zealand</h4>
                         <p class="list-group-item-text">Uncover amazing aerial photos, posters, newspapers, artwork, research papers and more. Use DigitalNZ to discover millions of NZ items from the digital stores of libraries, museums, archives, communities, and government.</p>
                     </button>
-                    <button id="NZETC" class="list-group-item disabled" onclick="databaseSelected('NZETC');">
+                    <button id="NZETC" class="list-group-item" onclick="databaseSelected('NZETC');">
                         <h4 class="list-group-item-heading">NZ Electronic Text Centre</h4>
                         <p class="list-group-item-text">The New Zealand Electronic Text Collection comprises significant New Zealand and Pacific Island texts and materials held by Victoria University of Wellington Library.</p>
                     </button>
@@ -180,6 +180,8 @@
                     var NZOnScreenAttr = document.getElementById('NZOnScreen').getAttribute("class");
                     var PapersPastAttr = document.getElementById('PapersPast').getAttribute("class");
                     var DigitalNZAttr = document.getElementById('DIGITALNZ').getAttribute("class");
+                    var TearaAttr = document.getElementById('Teara').getAttribute("class");
+                    var NZETCAttr = document.getElementById('NZETC').getAttribute("class");
                     
                     if (PapersPastAttr == "list-group-item active") {
                         console.log("Database PapersPast has been selected");
@@ -260,6 +262,20 @@
                         var startdateYear = startDate.value.split("-").splice(-1, 1);
                         console.log("Start Year: " + startdateYear);
                         var finalURL = "http://www.digitalnz.org/records?i[year]=[" + startdateYear + "+TO+" + enddateYear + "]&text=" + searchurl;
+                        window.open(finalURL);
+                    }
+                    else if (TearaAttr == "list-group-item active") {
+                        //Replace space with +
+                        var searchurl = searchValue.replace(" ", "+");
+                        console.log("Replaced spaces with +: " + searchurl);
+                        var finalURL = "http://www.teara.govt.nz/en/search/teara?keys=" + searchurl;
+                        window.open(finalURL);
+                    }
+                    else if (NZETCAttr == "list-group-item active") {
+                        //Replace space with +
+                        var searchurl = searchValue.replace(" ", "+");
+                        console.log("Replaced spaces with +: " + searchurl);
+                        var finalURL = "http://nzetc.victoria.ac.nz/tm/scholarly/facets/search?searchtext=" + searchurl;
                         window.open(finalURL);
                     }
                     else {

@@ -8,7 +8,8 @@ function databaseSelected(idOfSender) {
                 var EBSCO = document.getElementById("EBSCO");
                 var DigitalNZ = document.getElementById("DIGITALNZ");
                 var NZETC = document.getElementById("NZETC");
-                
+                var Teara = document.getElementById("Teara");            
+    
                 if (document.getElementById(idOfSender).getAttribute("class") === "list-group-item") {
                     if (PapersPast.getAttribute("class") === "list-group-item disabled") {
                         console.log("PapersPast is disabled");
@@ -48,10 +49,16 @@ function databaseSelected(idOfSender) {
                 
                     if (NZETC.getAttribute("class") === "list-group-item disabled") {
                         console.log("NZETC is disabled");
-                    }
-                    
+                    }             
                     else {
                         NZETC.setAttribute("class", "list-group-item");
+                    }
+                    
+                    if (Teara.getAttribute("class") === "list-group-item disabled") {
+                        console.log("Teara is disabled");
+                    }             
+                    else {
+                        Teara.setAttribute("class", "list-group-item");
                     }
                     var toSelect = document.getElementById(idOfSender)
                     toSelect.setAttribute("class", "list-group-item active");
@@ -83,6 +90,17 @@ function databaseSelected(idOfSender) {
         document.getElementById('searchTypeWarningMessage').innerHTML = "Search type is not available for Digital NZ at the moment!";
         document.getElementById('searchType').setAttribute('class', 'radio disabled');
         document.getElementById('dateRange').style.display = "block";
+    }
+    else if (idOfSender == "Teara") {
+        document.getElementById('searchTypeWarningMessage').innerHTML = "Date Selection and Search type is not available for Teara at the moment!";
+        document.getElementById('dateWarningMessage').innerHTML = "You can not select a date range for Teara.";
+        document.getElementById('searchType').setAttribute('class', 'radio disabled');
+        document.getElementById('dateRange').style.display = "none";
+    }
+    else if (idOfSender == "NZETC") {
+        document.getElementById('searchTypeWarningMessage').innerHTML = "Search type &amp; Date Selection is not available for NZ Electronic Text Centre at the moment!";
+        document.getElementById('searchType').setAttribute('class', 'radio disabled');
+        document.getElementById('dateRange').style.display = "none";
     }
     
             }
