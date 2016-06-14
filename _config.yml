@@ -8,34 +8,34 @@ kramdown:
 defaults:
   -
     scope:
-      path: "Docs"
+      path: "docs"
       type: "pages"
     values:
       layout: "default"
   -
     scope:
-      path: "Docs/ModInstaller"
+      path: "docs/ModInstaller"
       type: "pages"
     values:
       layout: "default"
       categories: "ModInstaller"
   -
     scope:
-      path: "Docs/ServerInstaller"
+      path: "docs/ServerInstaller"
       type: "pages"
     values:
       layout: "default"
       categories: "ServerInstaller"
   -
     scope:
-      path: "Docs/SiteTester"
+      path: "docs/SiteTester"
       type: "pages"
     values:
       layout: "default"
       categories: "SiteTester"
   -
     scope:
-      path: "Docs/DatabaseSearcher"
+      path: "docs/DatabaseSearcher"
       type: "pages"
     values:
       layout: "default"
