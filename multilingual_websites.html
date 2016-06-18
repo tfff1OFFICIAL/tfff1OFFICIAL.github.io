@@ -44,7 +44,7 @@
          
     <script>
         function download() {
-            location.href="https://raw.githubusercontent.com/tfff1OFFICIAL/Multilingual-Websites/master/js/tfff1s-multilingual.js";
+            location.href="https://github.com/tfff1OFFICIAL/Multilingual-Websites/archive/master.zip";
         }
     </script>
         <div id="header"></div>
@@ -83,8 +83,7 @@
                 <pre class="line-numbers">
                     <code class="language-markup">
 &lt;script type="text/javascript" src="/go/to/folder/tfff1s-multilingual.js"&gt;&lt;/script&gt;
-&lt;script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"&gt;&lt;/script&gt;
-                    </code>
+&lt;script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"&gt;&lt;/script&gt;</code>
                 </pre>
                 <br>
                 <p id="start-3">Step 3:</p>
@@ -107,8 +106,7 @@
     var attribute = $('html').attr('lang');
     loadLanguage(attribute, "To-Language-Folder");
   }); 
-&lt;/script&gt;
-                    </code>
+&lt;/script&gt;</code>
                 </pre>
                 <br><br>
                 <h2 id="usage">Usage</h2>
@@ -136,8 +134,7 @@
                 <pre>
                     <code class="language-markup">
 &lt;h1&gt;Hi&lt;/h1&gt;
-&lt;div&gt;&lt;a href="www.example.com"&gt;Example Website&lt;/a&gt;&lt;/div&gt;
-                    </code>
+&lt;div&gt;&lt;a href="www.example.com"&gt;Example Website&lt;/a&gt;&lt;/div&gt;</code>
                 </pre>
                 <br>
                 <h4>Method</h4>
@@ -149,23 +146,19 @@
                 <pre>
 
 <span class="token attr-value"><span class="token attr-name">header</span><span class="token punctuation">=</span>Hi</span>
-<span class="token attr-value"><span class="token attr-name">example_site</span><span class="token punctuation">=</span>Example Website</span>
-
-                </pre>
+<span class="token attr-value"><span class="token attr-name">example_site</span><span class="token punctuation">=</span>Example Website</span></pre>
                 <br>
                 <p>In my "fr-fr.lang" file I will add:</p>
                 <pre>
 <span class="token attr-value"><span class="token attr-name">header</span><span class="token punctuation">=</span>Salut</span>
-<span class="token attr-value"><span class="token attr-name">example_site</span><span class="token punctuation">=</span>Exemple Site</span>
-                </pre>
+<span class="token attr-value"><span class="token attr-name">example_site</span><span class="token punctuation">=</span>Exemple Site</span></pre>
                 <br><br>
                 <p>Step 2:</p>
                 <p>I will now change the HTML to look like this:</p>
                 <pre>
                     <code class="language-markup">
 &lt;h1&gt;&lt;lang langID="header"&gt;&lt;/lang&gt;&lt;/h1&gt;
-&lt;div&gt;&lt;a href="www.example.com"&gt;&lt;lang langID="example_site"&gt;&lt;/lang&gt;&lt;/a&gt;&lt;/div&gt;
-                    </code>
+&lt;div&gt;&lt;a href="www.example.com"&gt;&lt;lang langID="example_site"&gt;&lt;/lang&gt;&lt;/a&gt;&lt;/div&gt;</code>
                 </pre>
                 
                 Now if I change the language to French it will look like:
@@ -173,15 +166,13 @@
                 <pre>
                     <code class="language-markup">
 &lt;h1&gt;Salut&lt;/h1&gt;
-&lt;div&gt;&lt;a href="www.example.com"&gt;Exemple Site&lt;/a&gt;&lt;/div&gt;
-                    </code>
+&lt;div&gt;&lt;a href="www.example.com"&gt;Exemple Site&lt;/a&gt;&lt;/div&gt;</code>
                 </pre>
                 And in English it will look like:<br>
                 <pre>
                     <code class="language-markup">
 &lt;h1&gt;Hi&lt;/h1&gt;
-&lt;div&gt;&lt;a href="www.example.com"&gt;Example Website&lt;/a&gt;&lt;/div&gt;
-                    </code>
+&lt;div&gt;&lt;a href="www.example.com"&gt;Example Website&lt;/a&gt;&lt;/div&gt;</code>
                 </pre>
                 <br>
                 This way works best and is most easily scalable to any number of different languages.
@@ -190,8 +181,7 @@
                 <pre>
                     <code class="language-markup">
 &lt;h1&gt;&lt;lang en-us="Hi" fr-fr="Salut"&gt;&lt;/lang&gt;&lt;/h1&gt;
-&lt;div&gt;&lt;a href="www.example.com"&gt;&lt;lang en-us="Example Website" fr-fr="Exemple Site"&gt;&lt;/lang&gt;&lt;/a&gt;&lt;/div&gt;
-                    </code>
+&lt;div&gt;&lt;a href="www.example.com"&gt;&lt;lang en-us="Example Website" fr-fr="Exemple Site"&gt;&lt;/lang&gt;&lt;/a&gt;&lt;/div&gt;</code>
                 </pre>
                 <br>
                 <p>This would dramatically increase download times for your website, as instead of downloading one language's worth of data, the user will be downloading the data for all of the language your website supports.</p>
@@ -201,8 +191,7 @@
                 
                 <pre>
                     <code class="language-javascript">
-changeLanguage('ll-cc');
-                    </code>
+changeLanguage('ll-cc');</code>
                 </pre>
                 <br>
                 <h3 id="changingPages">Same language accross pages</h3>
@@ -210,8 +199,7 @@ changeLanguage('ll-cc');
                 
                 <pre>
                     <code class="language-javascript">
-location.href=langNavigate('/new_page.html');
-                    </code>
+location.href=langNavigate('/new_page.html');</code>
                 </pre>
                 <p>This will return "/new_page?lang=ll-cc" (ll = Language, cc = Country)</p>
                 <br>
@@ -220,8 +208,7 @@ location.href=langNavigate('/new_page.html');
                 
                 <pre>
                     <code class="language-http">
-http://www.example.com/?lang=en-us
-                    </code>
+http://www.example.com/?lang=en-us</code>
                 </pre>
                 <p>This will display the page in en-us.</p>
             </div>
