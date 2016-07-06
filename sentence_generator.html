@@ -1,9 +1,7 @@
----
-permalink: /404.html
----
-
-<html>
+<!DOCTYPE HTML>
+<html lang="en">
     <head>
+        
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,33 +24,25 @@ permalink: /404.html
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         
-        <script src="jquery.js"></script>
-        
         <!-- Load Header -->
         <script src="js/menu.js"></script>
         
+        <!-- Sentence JS -->
+        <script src="https://raw.githubusercontent.com/tfff1OFFICIAL/Sentence-Generator/master/popup.js"></script>
+        
         <script> 
             $(function(){
-                $("#header").load("/resources/header.html"); 
+                $("#header").load("resources/header.html");
+                $("#generator").load("https://raw.githubusercontent.com/tfff1OFFICIAL/Sentence-Generator/master/popup.html"); 
             });
-        </script>
+        </script> 
+        
     </head>
     
     <body>
         <div id="header"></div>
-        <img src="http://fraservalleyhumanesociety.com/wp-content/uploads/2015/11/6974484-cute-cat-smile.jpg" width="100%" style="position:absolute;z-index:-1;">
-        <div class="container" style="background:none;">
-            <div class="jumbotron" style="background:rgba(192,192,192, 0.7)">
-                <center>
-                <h1>404</h1>
-                    
-                <p style="font-size:1em;">Page Not Found</p>
-                <p>It appears that you're in the wrong place!</p>
-                <p>What would you like to do?</p>
-                <button class="btn btn-default" onclick="location.href='index.html'">Go to the home Page</button>
-                <button class="btn btn-default" onclick="window.history.back();">Go back to your previous page</button>
-                </center>
-            </div>
+        <div class="container">
+            <div id="generator"></div>
         </div>
     </body>
 </html>
