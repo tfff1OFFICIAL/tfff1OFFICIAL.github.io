@@ -1,0 +1,18 @@
+{
+  "addons": {
+    "{f5023a98-32bf-4840-ae57-3273f6092289}": {
+      "updates": [
+        {
+          "version": "1.0",
+          "update_link": "https://tfinlay.github.io/WebExtensions/learn_pdf_helper/v1.xpi",
+          "update_hash": "sha256:CFBB1930ACE9DDA307718A7580F583BE1048D849C10D0F50D2A7164D814DCA0B"
+        },
+        {
+          "version": "1.1",
+          "update_link": "https://tfinlay.github.io/WebExtensions/learn_pdf_helper/v1.1.xpi",
+          "update_hash": "sha256:63221BC14D2A0B81B024C8EB433F4D4F5332AF7BC5D557636DD4DCBD8772F76F"
+        }
+      ]
+    }
+  }
+}
