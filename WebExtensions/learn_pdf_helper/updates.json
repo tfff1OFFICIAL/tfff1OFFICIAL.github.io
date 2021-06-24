@@ -11,6 +11,11 @@
           "version": "1.1",
           "update_link": "https://tfinlay.github.io/WebExtensions/learn_pdf_helper/v1.1.xpi",
           "update_hash": "sha256:63221BC14D2A0B81B024C8EB433F4D4F5332AF7BC5D557636DD4DCBD8772F76F"
+        },
+        {
+          "version": "1.2.1",
+          "update_link": "https://tfinlay.github.io/WebExtensions/learn_pdf_helper/v1.2.1.xpi",
+          "update_hash": "sha256:07604997307EAE64C274214CB6AED9A9B564B4B1FF26A0A223AF521AF2814207"
         }
       ]
     }
